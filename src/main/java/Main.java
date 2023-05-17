@@ -21,13 +21,14 @@ public class Main {
 
         Main main = new Main();
         main.create();
+
         String dir = "users/"; // задаем директорию
         File[] files = new File(dir).listFiles();
         for(File file : files) {
             System.out.println(file.toString());
             main.readFile(file.toString());
         }
-        main.select("select lastname ,firstname,surname,mail, STRING_AGG(groupname,', ') AS Член_групп_СКДПУ from users group by lastname,firstname,surname,mail;");
+        main.select("select lastname ,firstname,surname,mail, STRING_AGG(groupname,', ') AS Член_групп_СКДПУ from users group by lastname,firstname,surname,mail order by lastname;");
         main.execute("DROP TABLE users");
 
 
